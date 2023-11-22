@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+@font-face {
+  font-family: kyu;
+  src: url("Poppins-Bold.ttf");
+}
+
+#wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /*yaha overflow-y:auto isliye rakha hai taaki,hamara page
+  scrollable ban paye*/
+  perspective: 100px;
+  /*we are applying perspective onto wrapper(not not just only container) bcz when we will translate images
+  along z axis(negatively),then the distance btw wrapper and screen will be
+  same.
+  and when we will scale the images,then they will try to overflow this wrapper and then
+  when will will scroll down,we get parallax effect
+  
+  
+  and also bcz for parallax effect a frame needs to be moved,and 
+  then the images move at different speed*/
+
+  background-image: url("https://www.si.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cq_auto:good%2Cw_1200/MTk4NjM0OTIzMTEwNzA0OTAz/oliveira.png");
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /*unless and untill we use top,left,bottom ,right to position the 
+  relative elemnet i.e the images,we don't need position:relative
+  here is just used used*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  /*used to preserve the 3d property  on its's child i.e images */
+  /* z-index: -1; */
+  /* perspective: 200px; */
+}
+
+#background,
+#foreground {
+  width: 100%;
+  /*images ko size 100% isliye de rahe hai ,ttaki woh responsive
+behaviour show kare,viewport ghatney par.
+agar hardcode karke totally frame mei bhi rakh le toh bhi chalega par viewport 
+khotta honey par image responsive nahi rahegi*/
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+#background {
+  z-index: 0;
+  transform: translateZ(-80px) scale(2.4);
+  /*perspective affects the size of image after translate,
+  bcz bade perspective k saamne chota translate bada hi dikhega
+  compared to 
+  chote perspective k saamne chota translate chota hi dikhega*/
+}
+
+#foreground {
+  z-index: 0;
+  transform: translateZ(-20px) scale(1.2);
+}
+
+h1 {
+  z-index: 1;
+  position: absolute;
+  color: whitesmoke;
+  font-size: 10rem;
+  font-family: kyu;
+  top: 5rem;
+  letter-spacing: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 10px grey;
+}
