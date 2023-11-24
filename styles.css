@@ -1,11 +1,11 @@
 * {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin: 0px;
 }
 
 @font-face {
   font-family: kyu;
-  src: url("Poppins-Bold.ttf");
+  src: url(Poppins-Bold.ttf);
 }
 
 #wrapper {
@@ -25,41 +25,39 @@
   
   and also bcz for parallax effect a frame needs to be moved,and 
   then the images move at different speed*/
-
-  background-image: url("https://www.si.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cq_auto:good%2Cw_1200/MTk4NjM0OTIzMTEwNzA0OTAz/oliveira.png");
 }
 
 #container {
   width: 100%;
   height: 100%;
-  position: relative;
-  /*unless and untill we use top,left,bottom ,right to position the 
-  relative elemnet i.e the images,we don't need position:relative
-  here is just used used*/
   display: flex;
   justify-content: center;
   align-items: center;
   transform-style: preserve-3d;
   /*used to preserve the 3d property  on its's child i.e images */
-  /* z-index: -1; */
-  /* perspective: 200px; */
+  z-index: -1;
+  position: relative;
+  /*unless and untill we use top,left,bottom ,right to position the 
+  relative elemnet i.e the images,we don't need position:relative
+  here is just used used*/
 }
 
 #background,
 #foreground {
+  position: absolute;
+  object-fit: cover;
   width: 100%;
   /*images ko size 100% isliye de rahe hai ,ttaki woh responsive
 behaviour show kare,viewport ghatney par.
 agar hardcode karke totally frame mei bhi rakh le toh bhi chalega par viewport 
 khotta honey par image responsive nahi rahegi*/
   height: 100%;
-  position: absolute;
-  object-fit: cover;
 }
 
 #background {
   z-index: 0;
-  transform: translateZ(-80px) scale(2.4);
+  transform: translateZ(-200px) scale(3.3);
+  /* transform: translateZ(-200px); */
   /*perspective affects the size of image after translate,
   bcz bade perspective k saamne chota translate bada hi dikhega
   compared to 
@@ -68,17 +66,80 @@ khotta honey par image responsive nahi rahegi*/
 
 #foreground {
   z-index: 0;
-  transform: translateZ(-20px) scale(1.2);
+  transform: translateZ(-80px) scale(1.8);
+  /* transform: translateZ(-80px); */
 }
 
 h1 {
-  z-index: 1;
+  z-index: 0;
+  color: white;
   position: absolute;
-  color: whitesmoke;
   font-size: 10rem;
+  top: 6rem;
   font-family: kyu;
-  top: 5rem;
-  letter-spacing: 10px;
-  font-weight: bold;
-  text-shadow: 0 0 10px grey;
+  transform: translateX(15px);
+  text-shadow: 0px 0px 10px gray;
+  letter-spacing: 4px;
+}
+
+section {
+  background-color: rgb(45, 45, 45);
+  /*section ko wrapper k remaining hissey ka uppar pel diya gya hai
+  aur ye container waaley div k z-index aur position:relative ka kamaal hai ka kamaal hai
+
+  agar mei container aur section k postion:relative kar doon toh z-index ki need
+  nahhi padh rahi
+  */
+  width: 100%;
+  color: white;
+}
+
+#bg1 {
+  background-image: url(sport-1.jpg);
+}
+
+#bg2 {
+  background-image: url(sport-2.jpg);
+}
+
+#bg3 {
+  background-image: url(sport-3.jpg);
+}
+
+.bg {
+  height: 500px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  padding-left: 10rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-right: 10rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.8rem;
+}
+
+#sechead {
+  font-size: 5rem;
+  font-family: kyu;
+  padding-left: 10rem;
+  padding-top: 5rem;
+}
+
+.sub-headings {
+  color: black;
+  background-color: white;
+  font-size: 3.3rem;
+  font-family: kyu;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
